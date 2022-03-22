@@ -125,5 +125,13 @@ namespace WpfLab_5
         {
             Application.Current.Shutdown();
         }
+
+        private void colorTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Uri cTheme = new Uri(colorTheme.SelectedIndex == 0 ? "Light.xaml" : "Dark.xaml", UriKind.Relative);
+            ResourceDictionary cThemeDictionary = (ResourceDictionary)Application.LoadComponent(cTheme);
+            Application.Current.Resources.MergedDictionaries.Add(cThemeDictionary);
+        }
     }
 }

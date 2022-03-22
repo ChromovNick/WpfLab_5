@@ -18,18 +18,31 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Margin="0" Padding="3" Background="#FFEEF5FD">
+        <Menu Margin="0" Padding="3">
             <MenuItem Header="_Файл" BorderBrush="Gray" BorderThickness="1" Padding="5">
                 <MenuItem Header="_Открыть" Command="ApplicationCommands.Open"/>
                 <MenuItem Header="_Сохранить" Command="ApplicationCommands.Save"/>
                 <Separator/>
                 <MenuItem Header="_Выход" Command="ApplicationCommands.Close"/>
-                </MenuItem>
+            </MenuItem>
         </Menu>
         <ToolBarTray Grid.Row="1" >
             <ToolBar Margin="5" Padding="5" >
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource Fonts}"/>
-                <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource Sizes}"/>
+                <ComboBox Margin="5" 
+                          Padding="5" 
+                          SelectedIndex="0" 
+                          Width="200" 
+                          SelectionChanged="ComboBox_SelectionChanged" 
+                          ItemsSource="{StaticResource Fonts}"
+                          Style="{DynamicResource ComboBoxStyle}"/>
+                
+                <ComboBox Margin="5" 
+                          Padding="5" 
+                          SelectedIndex="2" 
+                          Width="50" 
+                          SelectionChanged="ComboBox_SelectionChanged_1" 
+                          ItemsSource="{StaticResource Sizes}"
+                          Style="{DynamicResource ComboBoxStyle}"/>
             </ToolBar>
             <ToolBar Margin="5" Padding="5">
                 <ToggleButton Click="Button_Click" IsChecked="False">
@@ -50,10 +63,19 @@
                     <RadioButton Content="Черный" IsChecked="True" Checked="RadioButton_Checked" />
                     <RadioButton Content="Красный" Click="RadioButton_Click" />
                 </StackPanel>
+                <Separator/>
+                <ComboBox Name="colorTheme" 
+                          Width="150"
+                          Margin="5"
+                          SelectedIndex="0" SelectionChanged="colorTheme_SelectionChanged"
+                          Style="{DynamicResource ComboBoxStyle}">
+                    <TextBlock Text="Светлая тема"/>
+                    <TextBlock Text="Темная тема"/>
+                </ComboBox>
             </ToolBar>
         </ToolBarTray>
         <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" FontSize="16" FontFamily="Arial" TextWrapping="Wrap">
 
         </TextBox>
-        </Grid>
+    </Grid>
 </Window>
