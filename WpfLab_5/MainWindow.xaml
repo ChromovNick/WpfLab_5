@@ -32,17 +32,17 @@
                           Padding="5" 
                           SelectedIndex="0" 
                           Width="200" 
-                          SelectionChanged="ComboBox_SelectionChanged" 
                           ItemsSource="{StaticResource Fonts}"
-                          Style="{DynamicResource ComboBoxStyle}"/>
+                          Style="{DynamicResource ComboBoxStyle}"
+                          x:Name="comboBox1"/>
                 
                 <ComboBox Margin="5" 
                           Padding="5" 
                           SelectedIndex="2" 
-                          Width="50" 
-                          SelectionChanged="ComboBox_SelectionChanged_1" 
+                          Width="50"  
                           ItemsSource="{StaticResource Sizes}"
-                          Style="{DynamicResource ComboBoxStyle}"/>
+                          Style="{DynamicResource ComboBoxStyle}"
+                          x:Name="comboBox2"/>
             </ToolBar>
             <ToolBar Margin="5" Padding="5">
                 <ToggleButton Click="Button_Click" IsChecked="False">
@@ -74,7 +74,14 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" FontSize="16" FontFamily="Arial" TextWrapping="Wrap">
+        <TextBox 
+            x:Name="textBox" 
+            Grid.Row="2" 
+            Margin="5" 
+            Padding="5" 
+            FontSize="{Binding ElementName=comboBox2 , Path=Text}" 
+            FontFamily="{Binding ElementName=comboBox1 , Path=Text}" 
+            TextWrapping="Wrap">
 
         </TextBox>
     </Grid>
